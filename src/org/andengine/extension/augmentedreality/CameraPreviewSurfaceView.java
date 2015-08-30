@@ -11,14 +11,18 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 /**
- * (c) 2010 Nicolas Gramlich 
- * (c) 2011 Zynga Inc.
+ * (c) 2010 Nicolas Gramlich (c) 2011 Zynga Inc.
  * 
  * @author Nicolas Gramlich
- * @since 21:38:21 - 24.05.2010
+ * @since 21:38:32 - 24.05.2010
+ * 
+ * @author Lounge Katt
+ * 
  */
+
 @SuppressWarnings("deprecation")
 class CameraPreviewSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
+
 	// ===========================================================
 	// Constants
 	// ===========================================================
@@ -42,7 +46,7 @@ class CameraPreviewSurfaceView extends SurfaceView implements SurfaceHolder.Call
 		this.mSurfaceHolder.setFormat(PixelFormat.TRANSLUCENT);
 		this.mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 	}
-	
+
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================

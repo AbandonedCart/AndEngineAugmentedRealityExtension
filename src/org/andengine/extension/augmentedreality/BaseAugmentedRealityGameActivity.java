@@ -13,6 +13,9 @@ import android.widget.FrameLayout;
  * 
  * @author Nicolas Gramlich
  * @since 21:38:32 - 24.05.2010
+ *
+ * @author Lounge Katt
+ * 
  */
 public abstract class BaseAugmentedRealityGameActivity extends BaseGameActivity {
 	// ===========================================================
@@ -44,20 +47,27 @@ public abstract class BaseAugmentedRealityGameActivity extends BaseGameActivity 
 	// ===========================================================
 
 	protected void onSetContentView() {
+//		this.mRenderSurfaceView = new RenderSurfaceView(this);
+//		this.mRenderSurfaceView.setRenderer(this.mEngine, this);
+//
+//		this.setContentView(this.mRenderSurfaceView,
+//				BaseGameActivity.createSurfaceViewLayoutParams());
+		
 		final FrameLayout frameLayout = new FrameLayout(this);
 		final FrameLayout.LayoutParams frameLayoutLayoutParams = new FrameLayout.LayoutParams(
 				FrameLayout.LayoutParams.MATCH_PARENT,
 				FrameLayout.LayoutParams.MATCH_PARENT);
 
 		this.mCameraPreviewSurfaceView = new CameraPreviewSurfaceView(this);
+		this.mCameraPreviewSurfaceView.getHolder().setFormat(
+				PixelFormat.TRANSLUCENT);
 
 		final FrameLayout.LayoutParams camViewLayoutParams = new FrameLayout.LayoutParams(
 				FrameLayout.LayoutParams.WRAP_CONTENT,
 				FrameLayout.LayoutParams.WRAP_CONTENT);
 
 		this.mRenderSurfaceView = new RenderSurfaceView(this);
-		this.mRenderSurfaceView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
-		this.mRenderSurfaceView.setZOrderMediaOverlay(true);
+//		this.mRenderSurfaceView.setZOrderMediaOverlay(true);
 		this.mRenderSurfaceView.setRenderer(this.mEngine, this);
 
 		final android.widget.FrameLayout.LayoutParams surfaceViewLayoutParams = new FrameLayout.LayoutParams(
@@ -65,7 +75,8 @@ public abstract class BaseAugmentedRealityGameActivity extends BaseGameActivity 
 		surfaceViewLayoutParams.gravity = Gravity.CENTER;
 
 		frameLayout.addView(this.mCameraPreviewSurfaceView, camViewLayoutParams);
-		frameLayout.addView(this.mRenderSurfaceView, surfaceViewLayoutParams);
+		frameLayout.addView(this.mRenderSurfaceView,
+				surfaceViewLayoutParams);
 
 		this.setContentView(frameLayout, frameLayoutLayoutParams);
 	}
